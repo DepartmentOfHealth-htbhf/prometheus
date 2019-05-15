@@ -1,0 +1,8 @@
+applications:
+  - name: prometheus-htbhf
+    memory: 512M
+    instances: 1
+    buildpacks:
+      - binary_buildpack
+    stack: cflinuxfs3
+    command: ./prometheus --config.file=prometheus.yml --web.listen-address=:8080

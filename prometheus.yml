@@ -1,0 +1,14 @@
+scrape_configs:
+  - job_name:       'help to buy healthy foods'
+
+    # Override the global default and scrape targets from this job every 5 seconds.
+    scrape_interval: 5s
+    scheme: https
+    static_configs:
+      - targets: ['prometheus-exporter-htbhf.london.cloudapps.digital']
+
+remote_write:
+- url: https://prometheus-us-central1.grafana.net/api/prom/push
+  basic_auth:
+    username: 7255
+    password: PASSWORD_PLACEHOLDER
