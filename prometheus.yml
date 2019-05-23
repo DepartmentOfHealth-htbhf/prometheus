@@ -6,6 +6,17 @@ scrape_configs:
     scheme: https
     static_configs:
       - targets: ['prometheus-exporter-htbhf.london.cloudapps.digital']
+    # drop all golang, swap and max_system_tx_age related metrics
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: go_(.*)
+        action: drop
+      - source_labels: [__name__]
+        regex: swap_usage_bytes
+        action: drop
+      - source_labels: [__name__]
+        regex: max_system_tx_age_s
+        action: drop
 
 remote_write:
 - url: https://prometheus-us-central1.grafana.net/api/prom/push
