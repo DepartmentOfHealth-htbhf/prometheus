@@ -1,8 +1,9 @@
 applications:
   - name: prometheus-htbhf
     memory: 512M
+    disk_quota: 2GB
     instances: 1
     buildpacks:
       - binary_buildpack
     stack: cflinuxfs3
-    command: ./prometheus --config.file=prometheus.yml --web.listen-address=:8080 --storage.tsdb.retention.time='1d'
+    command: ./prometheus --config.file=prometheus.yml --web.listen-address=:8080 --storage.tsdb.retention.time='4h'
